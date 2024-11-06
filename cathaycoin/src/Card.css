@@ -109,6 +109,9 @@
 /* Add some hover effect */
 .card {
   transition: transform 0.3s ease;
+ 
+    cursor: pointer;
+  
 }
 
 .card:hover {
