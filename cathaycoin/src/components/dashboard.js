@@ -5,9 +5,15 @@ import logo from '../images/icon.png';
 import flight from '../images/flight.png';
 import topup from '../images/Topup.png';
 import hotel from '../images/hotel.png';
+import { useNavigate } from 'react-router-dom';
 
 
 function Dashboard() {
+  const navigate = useNavigate();
+
+  const handleTopUp = () => {
+    navigate('/card');
+  };
   return (
     <div className="dashboard">
       <div className ="header-container">
@@ -25,8 +31,8 @@ function Dashboard() {
               <div className="percentage">+0.78%</div>
             </div>
             <div className="buttons">
-              <button className="action-button">Top up</button>
-              <button className="action-button">Rewards</button>
+            <button className="action-button" onClick={handleTopUp}>Top up</button>
+            <button className="action-button">Rewards</button>
             </div>
           </div>
     </div>
