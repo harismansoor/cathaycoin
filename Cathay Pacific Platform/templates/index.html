@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cathay Pacific - Book Flights & Hotels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="wallet">
+            Wallet Balance: {{ wallet_balance }} CTC
+        </div>
+        <h1>Cathay Pacific</h1>
+    </header>
+
+    <div class="flash">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <main>
+        <section class="option">
+            <h2>Purchase Flight Tickets</h2>
+            <img src="{{ url_for('static', filename='figs/flight.jpg') }}" alt="Flight" class="option-image">
+            <button onclick="location.href='{{ url_for('ticket') }}'">Buy Now</button>
+        </section>
+
+        <section class="option">
+            <h2>Book Hotels</h2>
+            <img src="{{ url_for('static', filename='figs/hotel.jpg') }}" alt="Hotel" class="option-image">
+            <button onclick="location.href='{{ url_for('hotel') }}'">Book Now</button>
+        </section>
+
+        <section class="option">
+            <h2>View Your Bookings</h2>
+            <button onclick="location.href='{{ url_for('records') }}'">View Records</button>
+        </section>
+
+        <section class="option">
+            <h2>Charge Wallet</h2>
+            <button onclick="location.href='{{ url_for('charge') }}'">Charge</button>
+        </section>
+    </main>
+</body>
+</html>
