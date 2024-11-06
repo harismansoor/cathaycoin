@@ -1,0 +1,50 @@
+/* Card.css */
+.card {
+  margin: 16px;
+  padding: 16px;
+  background-color: #e0f7f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  background-color: #d8f3dc;
+  padding: 8px;
+  border-radius: 12px 12px 0 0;
+}
+
+.card-body {
+  margin-top: 16px;
+  text-align: left;
+  background-color: #0d3a45;
+  color: white;
+  padding: 16px;
+  border-radius: 0 0 12px 12px;
+}
+
+.bank-account,
+.account-number,
+.balance {
+  margin: 8px 0;
+}
+
+.balance {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-body::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}

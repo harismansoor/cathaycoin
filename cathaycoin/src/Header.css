@@ -1,0 +1,14 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-card {
+  color: #007aff;
+  text-decoration: none;
+  font-size: 14px;
+}
