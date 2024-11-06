@@ -5,6 +5,8 @@ import logo from "../images/icon.png";
 import flight from "../images/flight.png";
 import topup from "../images/Topup.png";
 import hotel from "../images/hotel.png";
+import profile from "../images/Profile.png";
+
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
@@ -20,7 +22,12 @@ function Dashboard() {
           <div className="logo">
             <img src={logo} alt="CathayCoin Logo" className="logo-image" />
           </div>
-          <div className="profile-pic"></div>
+         
+          
+          <div className="profile-pic">
+          <img src={profile} alt="Profle Picture" className="profile-pic" />
+
+          </div>
         </div>
 
         <div className="balance-card">

@@ -115,3 +115,29 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.payment-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.add-card-button {
+  background: none;
+  border: none;
+  color: #007AFF;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.add-card-button:hover {
+  opacity: 0.8;
+}
