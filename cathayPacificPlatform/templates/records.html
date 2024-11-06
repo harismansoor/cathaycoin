@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bookings - Cathay Pacific</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="wallet">
+            Wallet Balance: {{ wallet_balance }} CTC
+        </div>
+        <h1>Cathay Pacific - Your Bookings</h1>
+    </header>
+
+    <div class="flash">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <main>
+        <section class="current-bookings">
+            <h2>Current Bookings</h2>
+            
+            <h3>Flights</h3>
+            {% if booked_flights %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight Number</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Price (CTC)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for flight in booked_flights %}
+                    <tr>
+                        <td>{{ flight.flight_number }}</td>
+                        <td>{{ flight.departure }}</td>
+                        <td>{{ flight.arrival }}</td>
+                        <td>{{ flight.departure_time }}</td>
+                        <td>{{ flight.arrival_time }}</td>
+                        <td>{{ flight.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No current flight bookings.</p>
+            {% endif %}
+
+            <h3>Hotels</h3>
+            {% if booked_hotels %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hotel Name</th>
+                        <th>Location</th>
+                        <th>Price per Night (CTC)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hotel in booked_hotels %}
+                    <tr>
+                        <td>{{ hotel.name }}</td>
+                        <td>{{ hotel.location }}</td>
+                        <td>{{ hotel.price_per_night }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No current hotel reservations.</p>
+            {% endif %}
+        </section>
+
+        <form method="POST" action="{{ url_for('clear_records') }}">
+            <button type="submit">Clear Current Bookings</button>
+        </form>
+
+        <section class="historical-records">
+            <h2>Historical Records</h2>
+            
+            <h3>Flights</h3>
+            {% if historical_flights %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight Number</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Price (CTC)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for flight in historical_flights %}
+                    <tr>
+                        <td>{{ flight.flight_number }}</td>
+                        <td>{{ flight.departure }}</td>
+                        <td>{{ flight.arrival }}</td>
+                        <td>{{ flight.departure_time }}</td>
+                        <td>{{ flight.arrival_time }}</td>
+                        <td>{{ flight.price }}</td>
+                        <td>{{ flight.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No historical flight records.</p>
+            {% endif %}
+
+            <h3>Hotels</h3>
+            {% if historical_hotels %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hotel Name</th>
+                        <th>Location</th>
+                        <th>Price per Night (CTC)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hotel in historical_hotels %}
+                    <tr>
+                        <td>{{ hotel.name }}</td>
+                        <td>{{ hotel.location }}</td>
+                        <td>{{ hotel.price_per_night }}</td>
+                        <td>{{ hotel.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No historical hotel records.</p>
+            {% endif %}
+        </section>
+
+        <button class="back-button" onclick="location.href='{{ url_for('index') }}'">Back to Home</button>
+    </main>
+</body>
+</html>

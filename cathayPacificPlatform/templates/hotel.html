@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Hotels - Cathay Pacific</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function confirmReservation() {
+            return confirm('Are you sure you want to reserve this hotel?');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="wallet">
+            Wallet Balance: {{ wallet_balance }} HKD
+        </div>
+        <h1>Cathay Pacific - Book Hotels</h1>
+    </header>
+
+    <div class="flash">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <main>
+        <section class="booking-info">
+            <h2>Available Hotels</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hotel Name</th>
+                        <th>Location</th>
+                        <th>Price per Night (CTC)</th>
+                        <th>Availability</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hotel in hotels %}
+                    <tr>
+                        <td>{{ hotel.name }}</td>
+                        <td>{{ hotel.location }}</td>
+                        <td>{{ hotel.price_per_night }}</td>
+                        <td>{{ hotel.available_rooms }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('book_hotel_action') }}" onsubmit="return confirmReservation();">
+                                <input type="hidden" name="hotel_name" value="{{ hotel.name }}">
+                                {% if hotel.available_rooms != 'Sold Out' %}
+                                <button type="submit">Reserve</button>
+                                {% else %}
+                                <button type="button" disabled>Sold Out</button>
+                                {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        <button class="back-button" onclick="location.href='{{ url_for('index') }}'">Back to Home</button>
+    </main>
+</body>
+</html>
