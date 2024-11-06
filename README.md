@@ -1,0 +1,2 @@
+# cathaycoin
+cathaycoin hackathon
