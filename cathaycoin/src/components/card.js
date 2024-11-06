@@ -16,11 +16,10 @@ function Card() {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         console.log('Connected', accounts[0]);
 
-        // Simulate a transaction to trigger the MetaMask popup
         const transactionParameters = {
-          to: accounts[0], // Sending to self, for demo purposes
+          to: accounts[0], 
           from: accounts[0],
-          value: '0x0', // Value in wei (0 ETH)
+          value: '0x0', 
         };
 
         await window.ethereum.request({
