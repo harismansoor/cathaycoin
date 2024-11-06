@@ -1,19 +1,25 @@
 // App.js
 import React from "react";
 import "./App.css";
-import Header from "./components/header";
+import Header from "./components/header.js";
 import Card from "./components/card";
-import Footer from "./components/footer";
 
 function App() {
+  const handleAddCard = () => {
+    // Handle add card action
+    console.log("Add card clicked");
+  };
+
   return (
     <div className="app">
-      <Header />
-      <Card />
-      <Footer />
-      <div className="resize-message">
-        Please minimize the screen to see the mobile view.
-      </div>
+      <Header
+        title="Payment Method"
+        actionText="Add card +"
+        onActionClick={handleAddCard}
+      />
+      <main className="main-content">
+        <Card />
+      </main>
     </div>
   );
 }

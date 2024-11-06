@@ -1,50 +1,117 @@
 /* Card.css */
+.card-container {
+  width: 320px;
+  margin: 20px auto;
+  perspective: 1000px;
+}
+
 .card {
-  margin: 16px;
-  padding: 16px;
-  background-color: #e0f7f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #1d4d4f;
+  border-radius: 20px;
+  padding: 20px;
   position: relative;
   overflow: hidden;
+  min-height: 200px;
 }
 
 .card-header {
+  background: #e8f8e8;
+  margin: -20px -20px 20px -20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
-  background-color: #d8f3dc;
-  padding: 8px;
-  border-radius: 12px 12px 0 0;
+  color: #000;
+  font-weight: 500;
+  border-radius: 20px 20px 0 0;
 }
 
-.card-body {
-  margin-top: 16px;
-  text-align: left;
-  background-color: #0d3a45;
+.bank-info {
   color: white;
-  padding: 16px;
-  border-radius: 0 0 12px 12px;
+  margin-bottom: 30px;
 }
 
-.bank-account,
-.account-number,
-.balance {
-  margin: 8px 0;
+.bank-account {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
-.balance {
-  font-size: 20px;
+.account-number {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.balance-info {
+  color: white;
+}
+
+.balance-label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.balance-amount {
+  font-size: 24px;
   font-weight: bold;
 }
 
-.card-body::before {
-  content: "";
+.wifi-icon {
   position: absolute;
-  top: -20px;
-  right: -40px;
-  width: 200px;
-  height: 200px;
-  background: rgba(255, 255, 255, 0.2);
+  bottom: 20px;
+  right: 20px;
+}
+
+.decorative-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.circle-1 {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  left: -50px;
+}
+
+.circle-2 {
+  width: 120px;
+  height: 120px;
+  bottom: -20px;
+  right: -20px;
+}
+
+.circle-3 {
+  width: 80px;
+  height: 80px;
+  top: 60%;
+  right: 30%;
+}
+
+.line {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  top: 40%;
+  right: -75px;
+}
+
+/* Add some hover effect */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
