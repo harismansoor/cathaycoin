@@ -1,4 +1,3 @@
-// Card.js
 import React from "react";
 import "../Card.css";
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +8,33 @@ function Card() {
   const handleAddCard = () => {
     navigate('/add-card');
   };
+
+  const handleMetaMaskConnect = async () => {
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        // Request account access
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        console.log('Connected', accounts[0]);
+
+        // Simulate a transaction to trigger the MetaMask popup
+        const transactionParameters = {
+          to: accounts[0], // Sending to self, for demo purposes
+          from: accounts[0],
+          value: '0x0', // Value in wei (0 ETH)
+        };
+
+        await window.ethereum.request({
+          method: 'eth_sendTransaction',
+          params: [transactionParameters],
+        });
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    } else {
+      console.error('MetaMask is not installed!');
+    }
+  };
+
   return (
     <div>
       <div className="payment-header">
@@ -16,7 +42,7 @@ function Card() {
         <button className="add-card-button" onClick={handleAddCard}>Add card +</button>
       </div>
       <div className="card-container">
-        <div className="card">
+        <div className="card" onClick={handleMetaMaskConnect}>
           <div className="card-header">
             <span>WeChat Pay</span>
             <span>ID: **** 2312</span>
