@@ -1,27 +1,35 @@
 // src/components/Dashboard/Dashboard.js
 import React from 'react';
 import '../dashboard.css';
+import logo from '../images/icon.png';
+import flight from '../images/flight.png';
+import topup from '../images/Topup.png';
+import hotel from '../images/hotel.png';
+
 
 function Dashboard() {
   return (
     <div className="dashboard">
-      <div className="header">
-        <div className="logo">CATHAYCOIN</div>
-        <div className="profile-pic"></div>
-      </div>
-
-      <div className="balance-card">
-        <div className="balance-info">
-          <div className="label">Main balance</div>
-          <div className="amount">14,500<span className="decimal">.01</span> CTC</div>
-          <div className="percentage">+0.78%</div>
+      <div className ="header-container">
+        <div className="header">
+          <div className="logo">
+          <img src={logo} alt="CathayCoin Logo" className="logo-image" />
+          </div>
+          <div className="profile-pic"></div>
         </div>
-        <div className="buttons">
-          <button className="action-button">Top up</button>
-          <button className="action-button">Rewards</button>
-        </div>
-      </div>
 
+          <div className="balance-card">
+            <div className="balance-info">
+              <div className="label">Main balance</div>
+              <div className="amount">14,500<span className="decimal">.01</span> CTC</div>
+              <div className="percentage">+0.78%</div>
+            </div>
+            <div className="buttons">
+              <button className="action-button">Top up</button>
+              <button className="action-button">Rewards</button>
+            </div>
+          </div>
+    </div>
       <div className="refer-rewards">
         <div className="refer-text">
           <div>Refer Rewards</div>
@@ -49,7 +57,11 @@ function Dashboard() {
         </div>
         <div className="transaction-list">
           <div className="transaction-item">
-            <div className="transaction-icon flight"></div>
+            <div className="transaction-icon">
+            <img src={flight} alt="FLight Icon" className="transaction-icon-image" 
+ />
+
+            </div>
             <div className="transaction-details">
               <div>Ticket to KIX → SZX</div>
               <div className="transaction-date">Today 12:32</div>
@@ -58,7 +70,11 @@ function Dashboard() {
           </div>
 
           <div className="transaction-item">
-            <div className="transaction-icon topup"></div>
+          <div className="transaction-icon">
+            <img src={topup} alt="Topup" className="transaction-icon-image" 
+ />
+
+            </div>
             <div className="transaction-details">
               <div>Top up</div>
               <div className="transaction-date">Yesterday 02:12</div>
@@ -67,7 +83,11 @@ function Dashboard() {
           </div>
 
           <div className="transaction-item">
-            <div className="transaction-icon hotel"></div>
+            <div className="transaction-icon">
+            <img src={hotel} alt="Hotel" className="transaction-icon-image" 
+ />
+
+            </div>
             <div className="transaction-details">
               <div>Hotel Booking CTX2578</div>
               <div className="transaction-date">Oct 24 13:53</div>
